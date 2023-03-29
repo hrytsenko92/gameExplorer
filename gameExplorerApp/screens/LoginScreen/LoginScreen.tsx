@@ -23,20 +23,8 @@ const AppTitle = styled.Text`
   font-size: 30px;
   font-weight: 600;
 `;
-const LoginWrapper = styled.View`
-  width: 220px;
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  gap: 15px;
-`;
-const LoginTitle = styled.Text`
-  font-size: 25px;
-  font-weight: 400;
-  text-align: center;
-`;
 const LoginBTN = styled.TouchableOpacity`
-  width: 100%;
+  width: 250px;
   height: 50px;
   border-radius: 10px;
   background-color: #ffc52f;
@@ -47,6 +35,7 @@ const LoginBTN = styled.TouchableOpacity`
 `;
 const LoginBTNtext = styled.Text`
   font-size: 25px;
+  font-weight: 600;
 `;
 const AuthLogoSVG = styled(AuthLogo)``;
 
@@ -62,15 +51,12 @@ const LoginScreen = () => {
   return (
     <Container>
       <AppIntro>
-        <AppLogo width="400px" height="200px" />
+        <AppLogo width="400px" height="220px" />
         <AppTitle>Game Explorer</AppTitle>
       </AppIntro>
-      <LoginWrapper>
-        <LoginTitle>you are not logged</LoginTitle>
-        <LoginBTN onPress={onLogin}>
-          <LoginBTNtext>Log In</LoginBTNtext>
-        </LoginBTN>
-      </LoginWrapper>
+      <LoginBTN onPress={onLogin}>
+        <LoginBTNtext>Log In</LoginBTNtext>
+      </LoginBTN>
       <AuthLogoSVG />
     </Container>
   );

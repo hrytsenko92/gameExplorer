@@ -1,10 +1,23 @@
 import React from 'react';
-import {Button, Text, View} from 'react-native';
 import {useAuth0} from 'react-native-auth0';
+import styled from 'styled-components/native';
+import Genres from './GenresScreen/Genres';
+import Platform from './PlatformScreen/Platform';
+import Publishers from './PublishersScreen/Publishers';
+import Search from './Search/Search';
+import UserSetting from './UserSetting/UserSetting';
+
+const Container = styled.SafeAreaView``;
+const SearchAndSetting = styled.View``;
+const SearchItem = styled(Search)``;
+const SettingItem = styled(UserSetting)``;
+const Main = styled.View``;
+const GenresItem = styled(Genres)``;
+const PlatformItem = styled(Platform)``;
+const PublishersItem = styled(Publishers)``;
 
 const HomeScreen = () => {
   const {clearSession} = useAuth0();
-
   const onLogout = async () => {
     try {
       await clearSession();
@@ -12,16 +25,22 @@ const HomeScreen = () => {
       console.log('Log out cancelled');
     }
   };
-  return (
-    <View
-      style={{
-        padding: 150,
-      }}>
-      <Text>Home screen test</Text>
 
-      <Button onPress={onLogout} title={'Log Out'} />
-    </View>
+  return (
+    <Container>
+      <SearchAndSetting>
+        <SearchItem />
+        <SettingItem />
+      </SearchAndSetting>
+      <Main>
+        <GenresItem />
+        <PlatformItem />
+        <PublishersItem />
+      </Main>
+    </Container>
   );
 };
 
 export default HomeScreen;
+
+{/* <Button onPress={onLogout} title={'Log Out'} /> */}

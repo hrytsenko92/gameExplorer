@@ -13,7 +13,7 @@ const Home = () => {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName="Login">
         {!loggedIn ? (
           <Stack.Screen
             options={{headerShown: false}}
