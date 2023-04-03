@@ -1,13 +1,14 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import 'react-native-gesture-handler' //???
 import {useAuth0, Auth0Provider} from 'react-native-auth0';
-import HomeScreen from './screens/HomeScreen';
+import RootScreen from './screens/RootScreen/RootScreen';
 import LoginScreen from './screens/LoginScreen/LoginScreen';
 
 const Stack = createNativeStackNavigator();
 
-const Home = () => {
+const Log = () => {
   const {user} = useAuth0();
   const loggedIn = user !== undefined && user !== null;
 
@@ -24,7 +25,7 @@ const Home = () => {
           <Stack.Screen
             options={{headerShown: false}}
             name="Home"
-            component={HomeScreen}
+            component={RootScreen}
           />
         )}
       </Stack.Navigator>
@@ -37,7 +38,7 @@ const App = () => {
     <Auth0Provider
       domain={'dev-6iath7yetcajgvxx.us.auth0.com'}
       clientId={'K8W1i5k5NcNbd5aoaPNBHTZPouoOYwJN'}>
-      <Home />
+      <Log />
     </Auth0Provider>
   );
 };
