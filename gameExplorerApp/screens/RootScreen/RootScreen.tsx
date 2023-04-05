@@ -3,16 +3,15 @@ import 'react-native-gesture-handler';
 import {
   createStackNavigator,
   StackScreenProps,
-  StackNavigationProp,
 } from '@react-navigation/stack';
-import {TextInput, TouchableOpacity, Button, Text, View} from 'react-native';
+import {TextInput, TouchableOpacity, Button, Text} from 'react-native';
 import styled from 'styled-components/native';
 import Svg, {Path, G} from 'react-native-svg';
 import SearchScreen from './SearchScreen/SearchScreen';
 import SettingScreen from './SettingScreen/SettingScreen';
 import GenresScreen from './GenresScreen/GenresScreen';
 import PlatformScreen from './PlatformScreen/PlatformScreen';
-import PublishersScreen from './PublishersScreen/PublishersScreen';
+import DevelopersScreen from './DevelopersScreen/DevelopersScreen';
 
 const Container = styled.SafeAreaView`
   display: flex;
@@ -25,13 +24,13 @@ const SearchAndSetting = styled.View`
   align-items: center;
   justify-content: center;
   gap: 15px;
-  height: 100px;
+  height: 65px;
 `;
 const SearchForm = styled.View`
   width: 70%;
-  height: 60px;
+  height: 65px;
   border-radius: 15px;
-  padding-right: 10px;
+  padding-right: 7px;
   border-color: #adb4bf;
   border-width: 2px;
   display: flex;
@@ -42,11 +41,13 @@ const SearchForm = styled.View`
 const SearchInput = styled(TextInput)`
   padding-left: 20px;
   font-size: 17px;
+  width: 80%;
+  height: 45px;
 `;
 const SearchSubmit = styled(TouchableOpacity)`
   background-color: #adb4bf;
   width: 50px;
-  height: 40px;
+  height: 50px;
   border-radius: 10px;
   display: flex;
   flex-flow: row nowrap;
@@ -66,17 +67,13 @@ export type RootStackParamList = {
   SettingScreen?: any;
   GenresScreen?: undefined;
   PlatformScreen?: undefined;
-  PublishersScreen?: undefined;
+  DevelopersScreen?: undefined;
 };
 const Stack = createStackNavigator<RootStackParamList>();
 type Props = StackScreenProps<RootStackParamList>;
 
 const RootMenu = ({route, navigation}: Props) => {
   const [inputValue, setInputValue] = useState('');
-  function searchGame() {
-    console.log(inputValue);
-    // do something with the input value, like search for a game
-  }
   return (
     <Container>
       <SearchAndSetting>
@@ -86,11 +83,10 @@ const RootMenu = ({route, navigation}: Props) => {
             value={inputValue}
             onChangeText={setInputValue}
           />
-          <SearchSubmit onPress={searchGame}>
+          <SearchSubmit onPress={() => navigation.navigate('SearchScreen',{searchString: inputValue})}>
             <SearchSubmitTitle>Ok</SearchSubmitTitle>
           </SearchSubmit>
         </SearchForm>
-
         <SettingItem>
           <Svg
             style={{
@@ -139,19 +135,9 @@ const RootScreen = () => {
       <Stack.Screen name="SettingScreen" component={SettingScreen} />
       <Stack.Screen name="GenresScreen" component={GenresScreen} />
       <Stack.Screen name="PlatformScreen" component={PlatformScreen} />
-      <Stack.Screen name="PublishersScreen" component={PublishersScreen} />
+      <Stack.Screen name="DevelopersScreen" component={DevelopersScreen} />
     </Stack.Navigator>
   );
 };
 export default RootScreen;
 
-// import {useAuth0} from 'react-native-auth0';
-// const {clearSession} = useAuth0();
-// const onLogout = async () => {
-//   try {
-//     await clearSession();
-//   } catch (e) {
-//     console.log('Log out cancelled');
-//   }
-// };
-// <Button onPress={onLogout} title={'Log Out'} />

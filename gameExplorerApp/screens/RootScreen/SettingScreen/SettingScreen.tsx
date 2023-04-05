@@ -13,3 +13,14 @@ const SettingScreen = () => {
 };
 
 export default SettingScreen;
+
+// import {useAuth0} from 'react-native-auth0';
+// const {clearSession} = useAuth0();
+// const onLogout = async () => {
+//   try {
+//     await clearSession();
+//   } catch (e) {
+//     console.log('Log out cancelled');
+//   }
+// };
+// <Button onPress={onLogout} title={'Log Out'} />

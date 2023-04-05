@@ -1,16 +1,16 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 
-const PublishersScreen = () => {
+const DevelopersScreen = () => {
   return (
     <View style={{
       backgroundColor: 'red',
       width:100,
       height:100,
     }}>
-      <Text>Publishers</Text>
+      <Text>Developer</Text>
     </View>
   );
 };
 
-export default PublishersScreen;
+export default DevelopersScreen;
