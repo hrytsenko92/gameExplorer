@@ -12,6 +12,7 @@ import SettingScreen from './SettingScreen/SettingScreen';
 import GenresScreen from './GenresScreen/GenresScreen';
 import PlatformScreen from './PlatformScreen/PlatformScreen';
 import DevelopersScreen from './DevelopersScreen/DevelopersScreen';
+import { themeColors } from '../../assets/Theme';
 
 const Container = styled.SafeAreaView`
   display: flex;
@@ -31,7 +32,7 @@ const SearchForm = styled.View`
   height: 65px;
   border-radius: 15px;
   padding-right: 7px;
-  border-color: #adb4bf;
+  border-color: ${themeColors.bGray5};
   border-width: 2px;
   display: flex;
   flex-flow: row nowrap;
@@ -65,8 +66,8 @@ export type RootStackParamList = {
   RootMenu?: undefined;
   SearchScreen?: {searchString: string};
   SettingScreen?: any;
-  GenresScreen?: undefined;
-  PlatformScreen?: undefined;
+  GenresScreen?: {genreTitle: string};
+  PlatformScreen?: {platformTitle: string};
   DevelopersScreen?: undefined;
 };
 const Stack = createStackNavigator<RootStackParamList>();

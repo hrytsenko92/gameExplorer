@@ -1,4 +1,4 @@
-import React,{ useEffect, useState} from "react";
+import React, {useEffect, useState} from 'react';
 import {
   TextInput,
   TouchableOpacity,
@@ -10,6 +10,8 @@ import {
 } from 'react-native';
 import Svg, {G, Path} from 'react-native-svg';
 import styled from 'styled-components/native';
+import {themeColors} from '../../../../assets/Theme';
+import {Game} from '../../../../assets/gameCardType';
 import IOS from '../../../../assets/IOS';
 import Android from '../../../../assets/Android';
 import PC from '../../../../assets/PC';
@@ -18,17 +20,26 @@ import Xbox from '../../../../assets/Xbox';
 import Nintendo from '../../../../assets/Nintendo';
 
 const Container = styled.View`
-  border: 1px solid blue;
+  border: 1px solid blue; // delete
   width: 375px;
   height: 275px;
-  border-radius: 10px;
+  border-radius: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 `;
 const CardImgWrapper = styled.View`
+  background-color: transparent;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  width: 375px;
+  height: 175px;
   overflow: hidden;
 `;
 const CardImg = styled.Image`
   width: 375px;
   height: 175px;
+  object-fit: cover;
+  object-position: top;
 `;
 const CardDetails = styled.View`
   position: relative;
@@ -43,11 +54,14 @@ const CardTitleWrapper = styled.View`
   flex-flow: row nowrap;
   justify-content: flex-start;
   align-items: center;
-  background-color: red;
+  background-color: ${themeColors.yellow};
 `;
 const CardTitle = styled.Text`
   font-size: 20px;
+  font-weight: 700;
   margin-left: 20px;
+  text-overflow: clip; // ???
+  color: ${themeColors.bGray4};
 `;
 const DetailsWrapper = styled.View`
   padding: 30px 10px 10px;
@@ -62,7 +76,7 @@ const DetailsGenreWrapper = styled.View`
   justify-content: flex-start;
   gap: 10px;
 `;
-const DetailsGenreItem = styled.Text`
+const DetailsGenreItem = styled.Button`
   font-size: 18px; // button to screen genre/{genre}
 `;
 const DetailsPlatformsAbdDewelopers = styled.View`
@@ -78,8 +92,10 @@ const DetailPlatformWrapper = styled.View`
   justify-content: flex-start;
   gap: 10px;
 `;
-const DetailPlatformItem = styled.Text`
-  font-size: 18px; // button to screen platform/{platform}
+const DetailPlatformItem = styled.TouchableOpacity`
+  /* font-size: 18px;  */
+  width: 20px;
+  height: 20px;
 `;
 const DetailDeveloperWrapper = styled.View`
   display: flex;
@@ -89,15 +105,20 @@ const DetailDeveloperWrapper = styled.View`
 `;
 const DetailDeveloperItem = styled.Text``;
 
+interface UserProps {
+  game: Game;
+}
 
-
-const GameCard = () => {
+const GameCard: React.FC<UserProps & {navigation: any}> = ({
+  game,
+  navigation,
+}) => {
   return (
     <Container>
       <CardImgWrapper>
         <CardImg
           source={{
-            uri: 'https://media.rawg.io/media/resize/420/-/screenshots/c68/c689774c446800bad227773a0337a69c.jpg',
+            uri: `${game.background_image}`,
           }}
         />
       </CardImgWrapper>
@@ -107,13 +128,39 @@ const GameCard = () => {
         </CardTitleWrapper>
         <DetailsWrapper>
           <DetailsGenreWrapper>
-            <DetailsGenreItem>action map</DetailsGenreItem>
-            <DetailsGenreItem>action map</DetailsGenreItem>
+            {game.genres.map(item => (
+              <DetailsGenreItem
+                title={`${item.name}`}
+                onPress={() =>
+                  navigation.navigate('GenresScreen', {
+                    genreTitle: item.name,
+                  })
+                }
+              />
+            ))}
           </DetailsGenreWrapper>
           <DetailsPlatformsAbdDewelopers>
+
+
+
             <DetailPlatformWrapper>
-              <DetailPlatformItem>xbox</DetailPlatformItem>
-              <DetailPlatformItem>pc</DetailPlatformItem>
+               {game.platforms.map(item => (
+              <DetailPlatformItem onPress={() => navigation.navigate('PlatformScreen', {platformTitle: item.platform.name})}>
+                <Android  width="10px" height="10px" fill='red'/>
+                <Text>android</Text>
+              </DetailPlatformItem>
+                // title={`${item.platform.name}`}
+                
+              
+            ))}
+
+
+
+              {/* <DetailPlatformItem>xbox</DetailPlatformItem> */}
+
+
+
+
             </DetailPlatformWrapper>
             <DetailDeveloperWrapper>
               <DetailDeveloperItem>gsc</DetailDeveloperItem>
@@ -128,5 +175,14 @@ const GameCard = () => {
 
 export default GameCard;
 
-
-
+  //  <DetailPlatformWrapper>
+  //              {game.platforms.map(item => (
+  //             <DetailPlatformItem
+  //               title={`${item.platform.name}`}
+  //               onPress={() =>
+  //                 navigation.navigate('GenresScreen', {
+  //                   platformTitle: item.platform.name,
+  //                 })
+  //               }
+  //             />
+  //           ))}
