@@ -10,8 +10,8 @@ import Xbox from './Xbox';
 import Nintendo from './Nintendo';
 import OthersPlatforms from './OthersPlatforms';
 
-const Container = styled.View`
-  border: 1px solid blue; // delete
+const CardContainer = styled.View`
+  border: 1px solid ${themeColors.bGray2};
   width: 95%;
   height: 350px;
   border-radius: 15px;
@@ -47,12 +47,20 @@ const CardTitleWrapper = styled.View`
   align-items: center;
   background-color: ${themeColors.yellow};
 `;
-const CardTitle = styled.Text`
-  font-size: 20px;
+const CardTitleButton = styled.TouchableOpacity`
+  width: 300px;
+  height: 50px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px 20px;
+  text-overflow: ellipsis;
+`;
+const CardTitleButtonText = styled.Text`
+  color: ${themeColors.link};
+  font-size: 21px;
   font-weight: 700;
-  margin-left: 20px;
-  text-overflow: clip; // ???
-  color: ${themeColors.bGray4};
 `;
 const DetailsWrapper = styled.View`
   padding: 35px 10px 10px;
@@ -64,11 +72,11 @@ const DetailsGenreWrapper = styled.View`
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 10px;
 `;
 const DetailsGenreItem = styled.Button`
-  font-size: 18px; // button to screen genre/{genre}
+  font-size: 18px;
 `;
 const DetailPlatformWrapper = styled.View`
   display: flex;
@@ -85,8 +93,9 @@ const DetailPlatformItem = styled.TouchableOpacity`
   gap: 5px;
 `;
 const DetailPlatformItemText = styled.Text`
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 500;
+  color: ${themeColors.link};
 `;
 
 interface UserProps {
@@ -98,7 +107,7 @@ const GameCard: React.FC<UserProps & {navigation: any}> = ({
   navigation,
 }) => {
   return (
-    <Container>
+    <CardContainer>
       <CardImgWrapper>
         <CardImg
           source={{
@@ -108,7 +117,14 @@ const GameCard: React.FC<UserProps & {navigation: any}> = ({
       </CardImgWrapper>
       <CardDetails>
         <CardTitleWrapper>
-          <CardTitle>{game.name}</CardTitle>
+          <CardTitleButton
+            onPress={() =>
+              navigation.navigate('GameDetailScreen', {
+                gameID: game.id,
+              })
+            }>
+            <CardTitleButtonText>{game.name}</CardTitleButtonText>
+          </CardTitleButton>
         </CardTitleWrapper>
         <DetailsWrapper>
           <DetailsGenreWrapper>
@@ -166,7 +182,7 @@ const GameCard: React.FC<UserProps & {navigation: any}> = ({
           </DetailPlatformWrapper>
         </DetailsWrapper>
       </CardDetails>
-    </Container>
+    </CardContainer>
   );
 };
 

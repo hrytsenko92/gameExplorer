@@ -6,4 +6,5 @@ export const themeColors = {
   bGray4: '#5a6271',
   bGray5: '#adb4bf',
   bWhite: '#fff',
+  link: '#2488FB',
 };

@@ -3,7 +3,8 @@ import axios from 'axios';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../RootScreen';
 import styled from 'styled-components/native';
-import GameCard from '../../../components/gameCard';
+import GameCard from '../../../components/GameCard';
+
 import {Game} from '../../../components/gameCardType';
 
 const Container = styled.View`
@@ -44,7 +45,7 @@ const SearchScreen = ({route, navigation}: Props) => {
     <Container>
       <GameList showsVerticalScrollIndicator={false}>
         {games.map(item => (
-          <GameCard game={item} navigation={navigation} />
+          <GameCard key={item.id} game={item} navigation={navigation} />
         ))}
       </GameList>
     </Container>
