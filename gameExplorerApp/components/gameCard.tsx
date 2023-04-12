@@ -2,13 +2,13 @@ import React from 'react';
 import styled from 'styled-components/native';
 import {themeColors} from './Theme';
 import {Game} from './gameCardType';
-import IOS from './IOS';
-import Android from './Android';
-import PC from './PC';
-import Ps from './Ps';
-import Xbox from './Xbox';
-import Nintendo from './Nintendo';
-import OthersPlatforms from './OthersPlatforms';
+import IOS from './svg/IOS';
+import Android from './svg/Android';
+import PC from './svg/PC';
+import Ps from './svg/Ps';
+import Xbox from './svg/Xbox';
+import Nintendo from './svg/Nintendo';
+import OthersPlatforms from './svg/OthersPlatforms';
 
 const CardContainer = styled.View`
   border: 1px solid ${themeColors.bGray2};

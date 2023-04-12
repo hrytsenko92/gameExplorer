@@ -1,11 +1,11 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../RootScreen';
+import {RootStackParamList} from '../Root';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'GameDetailScreen'>;
+type Props = NativeStackScreenProps<RootStackParamList, 'GameDetails'>;
 
-const GameDetailScreen = ({route, navigation}: Props) => {
+const GameDetails = ({route, navigation}: Props) => {
   console.log(route);
   console.log(navigation);
   return (
@@ -16,4 +16,4 @@ const GameDetailScreen = ({route, navigation}: Props) => {
   );
 };
 
-export default GameDetailScreen;
+export default GameDetails;
