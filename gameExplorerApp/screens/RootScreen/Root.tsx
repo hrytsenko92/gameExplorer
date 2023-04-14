@@ -8,7 +8,6 @@ import MenuBtn from '../../components/rootMenu/MenuBtn';
 import List from './List/List';
 import GameList from './GameList/GameList';
 import GameDetails from './GameDetails/GameDetails';
-import {Game} from '../../components/gameCardType';
 
 const Container = styled.SafeAreaView`
   display: flex;
@@ -30,9 +29,9 @@ const LogOutButtonText = styled.Text`
 
 export type RootStackParamList = {
   Menu: undefined;
-  List?: {title: string};
-  GameList?: {games: Game[]};
-  GameDetails?: {gameID: number};
+  List: {title: string};
+  GameList: {target: string; value?: string; id?: number};
+  GameDetails: {gameID: number};
 };
 const Stack = createStackNavigator<RootStackParamList>();
 type Props = StackScreenProps<RootStackParamList>;
@@ -50,7 +49,7 @@ const Menu = ({navigation}: Props) => {
     <Container>
       <Search navigation={navigation} />
       <MenuBtn title="Genres" navigation={navigation} />
-      <MenuBtn title="Platform" navigation={navigation} />
+      <MenuBtn title="Platforms" navigation={navigation} />
       <MenuBtn title="Developers" navigation={navigation} />
       <LogOutButton onPress={onLogout}>
         <LogOutButtonText>Logout</LogOutButtonText>

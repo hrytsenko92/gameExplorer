@@ -119,7 +119,7 @@ const GameCard: React.FC<UserProps & {navigation: any}> = ({
         <CardTitleWrapper>
           <CardTitleButton
             onPress={() =>
-              navigation.navigate('GameDetailScreen', {
+              navigation.navigate('GameDetails', {
                 gameID: game.id,
               })
             }>
@@ -132,8 +132,10 @@ const GameCard: React.FC<UserProps & {navigation: any}> = ({
               <DetailsGenreItem
                 title={`${item.name}`}
                 onPress={() =>
-                  navigation.navigate('GenresScreen', {
-                    genreTitle: item.name,
+                  navigation.navigate('GameList', {
+                    title: item.name,
+                    target: 'Genres',
+                    id: item.id,
                   })
                 }
               />
@@ -143,8 +145,9 @@ const GameCard: React.FC<UserProps & {navigation: any}> = ({
             {game.platforms.slice(0, 3).map(item => (
               <DetailPlatformItem
                 onPress={() =>
-                  navigation.navigate('PlatformScreen', {
-                    platformTitle: item.platform.name,
+                  navigation.navigate('GameList', {
+                    target: 'Platforms',
+                    id: item.platform.id,
                   })
                 }>
                 {item.platform.name == 'PC' ? (

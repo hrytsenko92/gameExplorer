@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import styled from 'styled-components/native';
 import {themeColors} from '../Theme';
 
@@ -46,24 +46,30 @@ const SearchSubmitTitle = styled.Text`
 `;
 
 const Search: React.FC<{navigation: any}> = ({navigation}) => {
-  const [inputValue, setInputValue] = useState('');
-  async function getGames() {
-    let request = `https://api.rawg.io/api/games?key=bb2892ba5f2741ec9a2bbd0ea17a6633&search=${inputValue}`;
-    try {
-      const {data} = await axios.get(request, {
-        headers: {Accept: 'application/json'},
-      });
-      navigation.navigate('GameList', {games: data.results});
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        console.log('error message: ', error.message);
-        return error.message;
-      } else {
-        console.log('unexpected error: ', error);
-        return 'An unexpected error occurred';
-      }
-    }
-  }
+  const [inputValue, setInputValue] = useState<string>('');
+  // async function getGames() {
+  //   let request = `https://api.rawg.io/api/games?key=bb2892ba5f2741ec9a2bbd0ea17a6633&search=${inputValue}`;
+  //   try {
+  //     const {data} = await axios.get(request, {
+  //       headers: {Accept: 'application/json'},
+  //     });
+  //     navigation.navigate('GameList', {games: data.results});
+  //   } catch (error) {
+  //     if (axios.isAxiosError(error)) {
+  //       console.log('error message: ', error.message);
+  //       return error.message;
+  //     } else {
+  //       console.log('unexpected error: ', error);
+  //       return 'An unexpected error occurred';
+  //     }
+  //   }
+  // }
+  const sendProp = () => {
+    navigation.navigate('GameList', {
+      target: 'Search',
+      value: inputValue,
+    });
+  };
   return (
     <SearchWrapper>
       <SearchForm>
@@ -72,7 +78,7 @@ const Search: React.FC<{navigation: any}> = ({navigation}) => {
           value={inputValue}
           onChangeText={setInputValue}
         />
-        <SearchSubmit onPress={() => getGames()}>
+        <SearchSubmit onPress={sendProp}>
           <SearchSubmitTitle>Ok</SearchSubmitTitle>
         </SearchSubmit>
       </SearchForm>
