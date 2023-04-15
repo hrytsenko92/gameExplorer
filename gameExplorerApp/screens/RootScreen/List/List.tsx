@@ -6,7 +6,7 @@ import {RootStackParamList} from '../Root';
 import {ListType} from '../../../components/listType';
 import ListBtn from './ListBtn';
 
-const Container = styled.View`
+const Container = styled.SafeAreaView`
   display: flex;
   flex-flow: column nowrap;
   align-items: center;

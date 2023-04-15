@@ -6,15 +6,8 @@ import styled from 'styled-components/native';
 import GameCard from '../../../components/GameCard';
 import {Game} from '../../../components/gameCardType';
 
-const Container = styled.View`
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-`;
-const AllList = styled.ScrollView``;
+const Container = styled.SafeAreaView``;
+const AllList = styled.FlatList``;
 
 type Props = NativeStackScreenProps<RootStackParamList, 'GameList'>;
 const GameList = ({route, navigation}: Props) => {
@@ -58,13 +51,25 @@ const GameList = ({route, navigation}: Props) => {
 
   return (
     <Container>
-      <AllList showsVerticalScrollIndicator={false}>
-        {games.map(item => (
-          <GameCard key={item.id} game={item} navigation={navigation} />
-        ))}
-      </AllList>
+      {games.length > 0 ? (
+        <AllList
+          data={games}
+          renderItem={({item}) => (
+            <GameCard game={item} navigation={navigation} />
+          )}
+          keyExtractor={item => item.id}
+        />
+      ) : null}
     </Container>
   );
 };
 
 export default GameList;
+
+{
+  /* <AllList showsVerticalScrollIndicator={false}>
+{games.map(item => (
+  <GameCard key={item.id} game={item} navigation={navigation} />
+))}
+</AllList> */
+}

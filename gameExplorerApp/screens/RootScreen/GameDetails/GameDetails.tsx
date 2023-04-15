@@ -8,18 +8,11 @@ import {ScreenshotType} from '../../../components/screenshotType';
 import dayjs from 'dayjs';
 dayjs().format();
 
-const Container = styled.View`
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-`;
-const Loading = styled.Text``;
-
 const GameDetailsContainer = styled.ScrollView``;
 const GameImageWrapper = styled.View``;
 const GameImage = styled.Image`
   width: 100%;
-  height: 300px;
+  height: 350px;
 `;
 const GameDetailsWrapper = styled.View`
   position: relative;
@@ -93,7 +86,7 @@ const GameScreenshot = styled.Image`
 `;
 
 type Props = NativeStackScreenProps<RootStackParamList, 'GameDetails'>;
-const GameDetails = ({route, navigation}: Props) => {
+const GameDetails = ({route}: Props) => {
   const [game, setGame] = useState<GameDetailsType>();
   const [screenshots, setScreenshots] = useState<ScreenshotType[]>([]);
   async function getGames() {
@@ -139,51 +132,51 @@ const GameDetails = ({route, navigation}: Props) => {
   useEffect(() => {
     getGames();
     getScreenshots();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <Container>
-      {game ? (
-        <GameDetailsContainer>
-          <GameImageWrapper>
-            <GameImage
-              source={{
-                uri: `${game.background_image}`,
-              }}
-            />
-          </GameImageWrapper>
-          <GameDetailsWrapper>
-            <GameTitleWrapper>
-              <GameTitle>{game?.name}</GameTitle>
-            </GameTitleWrapper>
-            <GameInfoWrapper>
-              <GameRating>
-                <GameRatingText>Metacritic: {game.metacritic}</GameRatingText>
-              </GameRating>
-              <GameYear>
-                <GameYearText>Released: {getDate()}</GameYearText>
-              </GameYear>
-            </GameInfoWrapper>
-            <GamePlatforms>
-              {game.platforms.slice(0, 7).map(item => (
-                <GamePlatformsText>{item.platform.name}</GamePlatformsText>
-              ))}
-            </GamePlatforms>
-          </GameDetailsWrapper>
-          <GameDescription>{clearText()}</GameDescription>
-          <GameScreenshots>
-            {screenshots.slice(0, 5).map(item => (
-              <GameScreenshot
-                source={{
-                  uri: `${item.image}`,
-                }}
-              />
-            ))}
-          </GameScreenshots>
-        </GameDetailsContainer>
-      ) : (
-        <Loading>Loading</Loading>
-      )}
-    </Container>
+    <GameDetailsContainer>
+      <GameImageWrapper>
+        {game?.background_image !== undefined ? (
+          <GameImage
+            source={{
+              uri: `${game.background_image}`,
+            }}
+          />
+        ) : null}
+      </GameImageWrapper>
+      <GameDetailsWrapper>
+        <GameTitleWrapper>
+          <GameTitle>{game?.name}</GameTitle>
+        </GameTitleWrapper>
+        <GameInfoWrapper>
+          <GameRating>
+            <GameRatingText>Metacritic: {game?.metacritic}</GameRatingText>
+          </GameRating>
+          <GameYear>
+            <GameYearText>Released: {getDate()}</GameYearText>
+          </GameYear>
+        </GameInfoWrapper>
+        <GamePlatforms>
+          {game?.platforms.slice(0, 7).map(item => (
+            <GamePlatformsText key={item.platform.id}>
+              {item.platform.name}
+            </GamePlatformsText>
+          ))}
+        </GamePlatforms>
+      </GameDetailsWrapper>
+      <GameDescription>{clearText()}</GameDescription>
+      <GameScreenshots>
+        {screenshots.slice(0, 5).map(item => (
+          <GameScreenshot
+            key={item.id}
+            source={{
+              uri: `${item.image}`,
+            }}
+          />
+        ))}
+      </GameScreenshots>
+    </GameDetailsContainer>
   );
 };
 

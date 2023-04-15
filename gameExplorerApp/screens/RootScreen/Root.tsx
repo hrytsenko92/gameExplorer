@@ -61,10 +61,26 @@ const Menu = ({navigation}: Props) => {
 const Root = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Menu" component={Menu} />
-      <Stack.Screen name="List" component={List} />
-      <Stack.Screen name="GameList" component={GameList} />
-      <Stack.Screen name="GameDetails" component={GameDetails} />
+      <Stack.Screen
+        options={{headerShown: false}}
+        name="Menu"
+        component={Menu}
+      />
+      <Stack.Screen
+        options={{headerShown: false}}
+        name="List"
+        component={List}
+      />
+      <Stack.Screen
+        options={{headerShown: false}}
+        name="GameList"
+        component={GameList}
+      />
+      <Stack.Screen
+        options={{headerShown: false}}
+        name="GameDetails"
+        component={GameDetails}
+      />
     </Stack.Navigator>
   );
 };

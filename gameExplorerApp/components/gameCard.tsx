@@ -15,8 +15,7 @@ const CardContainer = styled.View`
   width: 95%;
   height: 350px;
   border-radius: 15px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin: 10px auto;
 `;
 const CardImgWrapper = styled.View`
   background-color: transparent;
@@ -27,10 +26,8 @@ const CardImgWrapper = styled.View`
   overflow: hidden;
 `;
 const CardImg = styled.Image`
-  width: 375px;
+  width: 100%;
   height: 225px;
-  object-fit: cover;
-  object-position: top;
 `;
 const CardDetails = styled.View`
   position: relative;
@@ -130,6 +127,7 @@ const GameCard: React.FC<UserProps & {navigation: any}> = ({
           <DetailsGenreWrapper>
             {game.genres.slice(0, 3).map(item => (
               <DetailsGenreItem
+                key={item.id}
                 title={`${item.name}`}
                 onPress={() =>
                   navigation.navigate('GameList', {
