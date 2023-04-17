@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import {themeColors} from './Theme';
-import {Game} from './gameCardType';
+import {Game} from './types/gameCardType';
 import IOS from './svg/IOS';
 import Android from './svg/Android';
 import PC from './svg/PC';
@@ -56,6 +56,7 @@ const CardTitleButton = styled.TouchableOpacity`
 `;
 const CardTitleButtonText = styled.Text`
   color: ${themeColors.link};
+  font-family: 'Electrolize';
   font-size: 21px;
   font-weight: 700;
 `;
@@ -90,6 +91,7 @@ const DetailPlatformItem = styled.TouchableOpacity`
   gap: 5px;
 `;
 const DetailPlatformItemText = styled.Text`
+  font-family: 'Electrolize';
   font-size: 17px;
   font-weight: 500;
   color: ${themeColors.link};
@@ -142,6 +144,7 @@ const GameCard: React.FC<UserProps & {navigation: any}> = ({
           <DetailPlatformWrapper>
             {game.platforms.slice(0, 3).map(item => (
               <DetailPlatformItem
+                key={item.platform.id}
                 onPress={() =>
                   navigation.navigate('GameList', {
                     target: 'Platforms',

@@ -20,6 +20,7 @@ const AppIntro = styled.View`
   align-items: center;
 `;
 const AppTitle = styled.Text`
+  font-family: 'Electrolize';
   font-size: 30px;
   font-weight: 600;
   color: #5a6271;
@@ -35,6 +36,7 @@ const LoginBTN = styled.TouchableOpacity`
   align-items: center;
 `;
 const LoginBTNtext = styled.Text`
+  font-family: 'Electrolize';
   font-size: 25px;
   font-weight: 600;
   color: #454b56;

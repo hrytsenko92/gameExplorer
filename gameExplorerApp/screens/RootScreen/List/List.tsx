@@ -3,7 +3,7 @@ import axios from 'axios';
 import styled from 'styled-components/native';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../Root';
-import {ListType} from '../../../components/listType';
+import {ListType} from '../../../components/types/listType';
 import ListBtn from './ListBtn';
 
 const Container = styled.SafeAreaView`

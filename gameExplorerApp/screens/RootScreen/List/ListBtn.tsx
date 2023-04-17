@@ -27,6 +27,7 @@ const ButtonBackground = styled.ImageBackground`
   opacity: 0.9;
 `;
 const ButtonText = styled.Text`
+  font-family: 'Electrolize';
   font-size: 30px;
   font-weight: 800;
   letter-spacing: 5px;

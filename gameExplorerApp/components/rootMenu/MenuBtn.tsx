@@ -14,11 +14,11 @@ const Button = styled.TouchableOpacity`
   align-items: center;
 `;
 const ButtonText = styled.Text`
+  font-family: 'Electrolize';
   font-size: 45px;
-  font-weight: 800;
+  font-weight: 500;
   letter-spacing: 5px;
-  color: ${themeColors.bGray3};
-  opacity: 0.6;
+  color: ${themeColors.yellow};
 `;
 
 interface UserProps {

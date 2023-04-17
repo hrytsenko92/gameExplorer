@@ -4,7 +4,7 @@ import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../Root';
 import styled from 'styled-components/native';
 import GameCard from '../../../components/GameCard';
-import {Game} from '../../../components/gameCardType';
+import {Game} from '../../../components/types/gameCardType';
 
 const Container = styled.SafeAreaView``;
 const AllList = styled.FlatList``;
@@ -65,11 +65,3 @@ const GameList = ({route, navigation}: Props) => {
 };
 
 export default GameList;
-
-{
-  /* <AllList showsVerticalScrollIndicator={false}>
-{games.map(item => (
-  <GameCard key={item.id} game={item} navigation={navigation} />
-))}
-</AllList> */
-}

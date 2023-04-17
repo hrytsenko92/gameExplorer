@@ -13,7 +13,7 @@ const Container = styled.SafeAreaView`
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  gap: 30px;
+  gap: 40px;
 `;
 const LogOutButton = styled.TouchableOpacity`
   margin-top: 15px;
@@ -22,7 +22,8 @@ const LogOutButton = styled.TouchableOpacity`
   align-items: center;
 `;
 const LogOutButtonText = styled.Text`
-  font-size: 18px;
+  font-family: 'Electrolize';
+  font-size: 21px;
   font-weight: 700;
   color: #cc4b4b;
 `;

@@ -3,8 +3,8 @@ import axios from 'axios';
 import styled from 'styled-components/native';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../Root';
-import {GameDetailsType} from '../../../components/GameDetailType';
-import {ScreenshotType} from '../../../components/screenshotType';
+import {GameDetailsType} from '../../../components/types/GameDetailType';
+import {ScreenshotType} from '../../../components/types/screenshotType';
 import dayjs from 'dayjs';
 dayjs().format();
 
@@ -35,6 +35,7 @@ const GameTitleWrapper = styled.View`
   overflow: hidden;
 `;
 const GameTitle = styled.Text`
+  font-family: 'Electrolize';
   font-size: 25px;
   font-weight: 600;
 `;
@@ -49,6 +50,7 @@ const GameInfoWrapper = styled.View`
 `;
 const GameRating = styled.View``;
 const GameRatingText = styled.Text`
+  font-family: 'Electrolize';
   font-size: 18px;
   font-weight: 400;
 `;
@@ -61,15 +63,18 @@ const GamePlatforms = styled.View`
   gap: 10px;
 `;
 const GamePlatformsText = styled.Text`
+  font-family: 'Electrolize';
   font-size: 18px;
   font-weight: 400;
 `;
 const GameYear = styled.View``;
 const GameYearText = styled.Text`
+  font-family: 'Electrolize';
   font-size: 18px;
   font-weight: 400;
 `;
 const GameDescription = styled.Text`
+  font-family: 'Electrolize';
   padding: 25px;
   text-align: justify;
 `;
