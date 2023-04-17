@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import 'react-native-gesture-handler'; //???
+import 'react-native-gesture-handler';
 import {useAuth0, Auth0Provider} from 'react-native-auth0';
 import Root from './screens/RootScreen/Root';
 import LoginScreen from './screens/LoginScreen/LoginScreen';
